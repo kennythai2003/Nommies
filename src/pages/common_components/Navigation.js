@@ -16,7 +16,7 @@ function Navigation() {
                 alt="home"
                 className="nav-icons"
               ></img>
-              <Link to="/home">home</Link>
+              <Link to="/landing">home</Link>
             </li>
             <li>
               <img
@@ -24,7 +24,7 @@ function Navigation() {
                 alt="notifications"
                 className="nav-icons"
               ></img>
-              <Link to="/landing">notifications</Link>
+              <Link to="/home">notifications</Link>
             </li>
             <li>
               <img
