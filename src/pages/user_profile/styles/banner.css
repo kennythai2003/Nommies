@@ -1,0 +1,16 @@
+/* banner.css */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: visible;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  z-index: 1;
+}
+
+.banner-image {
+  width: 100%;
+  height: auto;
+}

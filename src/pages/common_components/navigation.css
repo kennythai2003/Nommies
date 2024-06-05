@@ -1,0 +1,120 @@
+/* @import url("https://fonts.cdnfonts.com/css/lyons-serif") */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 400;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+}
+
+header {
+  padding-top: 20px; /* Add padding to the header to create space at the top */
+  position: relative; /* Ensure header is positioned relative for absolute children */
+  z-index: 3; /* Ensure the header is above the banner */
+  display: list-item;
+}
+
+#desktop-nav {
+  background-color: #ffffff;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  box-sizing: border-box;
+  position: fixed; /* Ensure the nav bar is fixed at the top */
+  top: 0; /* Ensure the nav bar is at the top of the page */
+  z-index: 2; /* Ensure the nav bar is above the banner */
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between; /* Ensure space between logo and nav-links */
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: grey;
+  text-decoration: underline;
+  text-underline-offset: 1rem;
+  text-decoration-color: rgb(181, 181, 181);
+}
+
+.logo {
+  font-size: 2rem;
+  display: inline-block;
+}
+
+.logo-text {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 1px solid;
+  animation: typing 3.5s infinite, cursor 0.75s step-end infinite;
+  animation-delay: 0s, 7s; /* adjust the delay for each animation if needed */
+}
+
+@keyframes cursor {
+  from {
+    border-right-color: transparent;
+  }
+  to {
+    border-right-color: black;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 8ch;
+  }
+}
+
+.logo:hover {
+  cursor: default;
+}
+
+.searchbar-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.searchbar {
+  background-color: rgba(222, 219, 219, 0.854);
+  color: rgba(128, 128, 128, 0.771);
+  width: 90%;
+  display: flex;
+  justify-content: flex-start; /* Align children to the left */
+  align-items: center; /* Align children vertically in the center */
+  border-radius: 2%;
+  padding: 10px 15px;
+  box-sizing: border-box;
+}
+
+.nav-icons {
+  height: 30px !important; /* Adjust the height of the icons */
+  width: 35px !important; /* Adjust the width of the icons */
+  margin-right: 10px;
+}

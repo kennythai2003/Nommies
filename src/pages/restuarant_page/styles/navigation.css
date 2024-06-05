@@ -1,0 +1,105 @@
+/* @import url("https://fonts.cdnfonts.com/css/lyons-serif")  */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 400;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+}
+
+#desktop-nav {
+  background-color: #ffffff;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5%;
+  box-sizing: border-box;
+  position: relative; /* Ensure it is positioned relative for z-index to work */
+  z-index: 3; /* Ensure the navigation is above the banner and profile image */
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  font-size: 1.5rem;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  text-decoration-color: white;
+}
+
+a:hover {
+  color: grey;
+  text-decoration: underline;
+  text-underline-offset: 1rem;
+  text-decoration-color: rgb(181, 181, 181);
+}
+
+.logo {
+  font-size: 2rem;
+  display: inline-block;
+}
+
+.logo-text {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 1px solid;
+  animation: typing 3.5s infinite, cursor 0.75s step-end infinite;
+  animation-delay: 0s, 7s; /* adjust the delay for each animation if needed */
+}
+
+@keyframes cursor {
+  from {
+    border-right-color: transparent;
+  }
+  to {
+    border-right-color: black;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 8ch;
+  }
+}
+
+.logo:hover {
+  cursor: default;
+}
+
+.searchbar-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.searchbar {
+  background-color: rgba(222, 219, 219, 0.854);
+  color: rgba(128, 128, 128, 0.771);
+  width: 90%;
+  display: flex;
+  justify-content: flex-start; /* Align children to the left */
+  align-items: center; /* Align children vertically in the center */
+  border-radius: 2%;
+  padding: 10px 15px;
+  box-sizing: border-box;
+}
+
+.nav-icons {
+  height: 20px;
+  width: 20px;
+  padding-right: 10px;
+}

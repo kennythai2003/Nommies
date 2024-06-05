@@ -1,0 +1,121 @@
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 400;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+}
+
+.section__container {
+  width: 100%;
+}
+
+.client__text {
+  margin-top: 50px;
+  /* padding-top: 30px; */
+  padding-left: 60px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.section__header {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 3rem;
+  color: black;
+  text-align: left;
+}
+
+.review-by-text {
+  color: rgba(128, 128, 128, 0.771);
+  font-size: 1.3rem;
+}
+
+.visit-date-text {
+  color: rgba(128, 128, 128, 0.771);
+  font-size: 1rem;
+}
+
+.section__description {
+  color: grey;
+  line-height: 1.75rem;
+  text-align: center;
+}
+
+.client__container {
+  padding-top: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.client__container :is(.section__header, .section__description) {
+  max-width: 600px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.client__swiper {
+  margin-top: 2rem;
+  max-width: 750px;
+  margin-inline: auto;
+  padding: 3rem 1rem;
+  overflow: hidden;
+  border: 2px solid rgba(138, 135, 135, 0.483);
+  box-shadow: 5px 5px 30px black;
+  border-radius: 3rem;
+}
+
+.swiper {
+  padding-bottom: 3rem;
+  width: 100%;
+}
+
+.client__card {
+  text-align: center;
+}
+
+.review-flexbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.reviewandvisitbox {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 20px; /* Adjust spacing between image and text */
+}
+
+.review-by-text,
+.visit-date-text {
+  margin: 0.7px;
+}
+
+.client__card img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  /* box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2); */
+}
+
+.swiper-pagination-bullet-active {
+  background-color: black;
+}
+
+.review-text {
+  font-size: 1.3rem;
+  color: rgba(128, 128, 128, 0.844);
+}
+
+.swipe-text {
+  font-size: 50px;
+}
+
+.make-grey {
+  color: rgba(128, 128, 128, 0.844);
+}
+
+.rating-text {
+  font-size: 25px;
+}

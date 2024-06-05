@@ -1,0 +1,20 @@
+/* searchbar.css */
+.searchbar-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px; /* Increased margin to add more padding at the top */
+  margin-bottom: 50px;
+}
+
+.searchbar {
+  background-color: rgba(222, 219, 219, 0.854);
+  color: rgba(128, 128, 128, 0.771);
+  width: 90%;
+  display: flex;
+  justify-content: flex-start; /* Align children to the left */
+  align-items: center; /* Align children vertically in the center */
+  border-radius: 2%;
+  padding: 10px 15px;
+  box-sizing: border-box;
+}

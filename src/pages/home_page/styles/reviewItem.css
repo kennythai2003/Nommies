@@ -1,0 +1,24 @@
+.review-item {
+  display: flex;
+  align-items: left;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.review-item img {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+
+.review-item div {
+  display: flex;
+  flex-direction: column;
+}
+
+.stars {
+  color: gold;
+}

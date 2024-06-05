@@ -1,0 +1,31 @@
+/* albumCarousel.css */
+.user-profile-album .carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.user-profile-album .carousel-container {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  height: auto;
+}
+
+.user-profile-album .carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(222, 219, 219, 0.854);
+  border: none;
+  color: rgba(138, 135, 135, 0.483);
+  padding: 7px;
+  cursor: pointer;
+}
+
+.user-profile-album .carousel button.left {
+  left: 0;
+}
+
+.user-profile-album .carousel button.right {
+  right: 0;
+}

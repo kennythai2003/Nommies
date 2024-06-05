@@ -1,0 +1,92 @@
+/* navigation.css */
+/* @import url("https://fonts.cdnfonts.com/css/lyons-serif")  */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 400;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+}
+
+#desktop-nav {
+  background-color: #ffffff;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5%;
+  box-sizing: border-box;
+  position: fixed; /* Fixes the nav bar to the top */
+  top: 0; /* Position it at the top */
+  z-index: 1000; /* Ensures it is on top of other elements */
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  font-size: 1.5rem;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  text-decoration-color: white;
+}
+
+a:hover {
+  color: grey;
+  text-decoration: underline;
+  text-underline-offset: 1rem;
+  text-decoration-color: rgb(181, 181, 181);
+}
+
+.logo {
+  font-size: 2rem;
+  display: inline-block;
+}
+
+.logo-text {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 1px solid;
+  animation: typing 3.5s infinite, cursor 0.75s step-end infinite;
+  animation-delay: 0s, 7s; /* adjust the delay for each animation if needed */
+}
+
+@keyframes cursor {
+  from {
+    border-right-color: transparent;
+  }
+  to {
+    border-right-color: black;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 8ch;
+  }
+}
+
+.logo:hover {
+  cursor: default;
+}
+
+.nav-icons {
+  height: 20px;
+  width: 20px;
+  padding-right: 10px;
+}
+
+/* Add padding to the main content */
+.main-content {
+  padding-top: 120px; /* Add padding to ensure content is not hidden behind the nav */
+}

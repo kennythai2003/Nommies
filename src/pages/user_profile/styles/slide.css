@@ -1,0 +1,21 @@
+/* slide.css */
+.slide {
+  width: calc(100% / var(--total-slides));
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border: none;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}

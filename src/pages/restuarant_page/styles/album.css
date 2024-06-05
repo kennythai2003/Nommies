@@ -1,0 +1,67 @@
+section.albums {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.album {
+  background-color: #ffffff;
+  padding: 10px;
+  margin: 20px;
+  width: calc(33.33% - 40px);
+  text-align: center;
+  box-sizing: border-box;
+  border: 2px solid rgba(138, 135, 135, 0.483);
+}
+
+.albumname {
+  background-color: rgba(222, 219, 219, 0.854);
+  padding: 10px;
+  font-size: 16px;
+  padding-left: 20px;
+  border-radius: 0;
+  margin: 0;
+  color: black;
+  text-align: left;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-container {
+  display: flex;
+  width: 300%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-container img {
+  width: calc(100% / 3);
+  flex-shrink: 0;
+  display: block;
+  object-fit: cover;
+}
+
+.carousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(222, 219, 219, 0.854);
+  border: none;
+  color: rgba(138, 135, 135, 0.483);
+  padding: 7px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.carousel button.left {
+  left: 10px;
+}
+
+.carousel button.right {
+  right: 10px;
+}
