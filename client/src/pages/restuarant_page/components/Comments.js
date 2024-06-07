@@ -6,39 +6,35 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
 import CustomerReview from "./CustomerReview";
-
-const commentsData = [
-  {
-    name: "kenny thai",
-    visitDate: "01/01/2000",
-    rating: "★★",
-    reviewText: "the food at ______ was so good, and service was great",
-    imgSrc: "coffee.gif",
-  },
-  {
-    name: "davis kim",
-    visitDate: "01/01/2000",
-    rating: "★★★★★",
-    reviewText: "cool beans",
-    imgSrc: "explore.gif",
-  },
-  {
-    name: "dilan guerrero",
-    visitDate: "01/01/2000",
-    rating: "★★★★★",
-    reviewText: "swag.",
-    imgSrc: "hotpot.gif",
-  },
-  {
-    name: "lauren tomasi",
-    visitDate: "01/01/2000",
-    rating: "★★★★★",
-    reviewText: "swag.",
-    imgSrc: "cake.gif",
-  },
-];
+import { useState, useEffect } from "react";
 
 const Comments = () => {
+  const [commentsData, setCommentsData] = useState([]);
+
+  useEffect(() => {
+    fetchReviews();
+  }, []);
+
+  const fetchReviews = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/getReviews');
+      if (!response.ok) {
+        throw new Error('Failed to fetch reviews');
+      }
+      const data = await response.json();
+      const formattedData = data.map((review) => ({
+        ...review,
+        dateOfVisit: new Date(review.dateOfVisit).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit'
+        })
+      }));
+      setCommentsData(formattedData);
+    } catch (error) {
+      console.error('Error fetching reviews:', error);
+    }
+  };
   return (
     <section className="section__container client__container" id="client">
       <p className="client__text">
@@ -57,11 +53,11 @@ const Comments = () => {
           {commentsData.map((comment, index) => (
             <SwiperSlide key={index}>
               <CustomerReview
-                name={comment.name}
-                visitDate={comment.visitDate}
+                name={comment.userName}
+                visitDate={comment.dateOfVisit}
                 rating={comment.rating}
                 reviewText={comment.reviewText}
-                imgSrc={comment.imgSrc}
+                imgSrc={"coffee.gif"}
               />
             </SwiperSlide>
           ))}
