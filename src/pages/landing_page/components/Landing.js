@@ -1,6 +1,14 @@
-import "../styles/landing.css";
+import "../styles/landing.css"
+import SignInModal from "./SignInModal.js"
+import React, { useState } from "react"
 
 function Landing() {
+  const [isModalVisible, setIsModalVisible] = useState(false)
+
+  const showSignInModal = () => {
+    setIsModalVisible(true)
+  }
+
   return (
     <div className="main-container">
       <div className="section__container header__container" id="home">
@@ -16,8 +24,13 @@ function Landing() {
             {/* Discover the true essence of culinary delight as you meet, eat, and savor the authentic flavors that define our passion for food. */}
           </p>
           <div className="header__btn">
-            <button className="btn" type="button">
-              <p> sign in</p>
+            <button className="btn" type="button" onClick={showSignInModal}>
+              <p> sign in </p>
+              <div>
+                {isModalVisible && (
+                  <SignInModal setIsModalVisible={setIsModalVisible} />
+                )}
+              </div>
             </button>
           </div>
         </div>
@@ -53,7 +66,7 @@ function Landing() {
         </div>
       </section>
     </div>
-  );
+  )
 }
 
-export default Landing;
+export default Landing
