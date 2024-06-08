@@ -11,6 +11,7 @@ connectDB();
 
 //importing handlers
 const reviewsHandler = require('./handlers/review');
+const restaurantsHandler = require('./handlers/restaurants');
 
 app.use(express.json({extended: false})); //body parser
 
@@ -21,6 +22,7 @@ app.use(cors());
 //endpoints
 app.get('/getReviews', reviewsHandler.getReviews);
 app.post('/writeReview', reviewsHandler.writeReview);
+app.get('/getRestaurants', restaurantsHandler.getRestaurants);
 
 
 const port = process.env.PORT || 8080;
