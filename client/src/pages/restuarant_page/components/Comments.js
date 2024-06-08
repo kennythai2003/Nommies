@@ -4,7 +4,6 @@ import "../styles/comments.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper";
 import CustomerReview from "./CustomerReview";
 import { useState, useEffect } from "react";
 
@@ -37,6 +36,7 @@ const Comments = () => {
       console.error('Error fetching reviews:', error);
     }
   };
+  
   const calculateAverageRating = (reviews) => {
     if (reviews.length === 0) {
       setAverageRating(0);
@@ -47,7 +47,7 @@ const Comments = () => {
     setAverageRating(average);
   };
   const renderStars = (rating) => {
-    const fullStars = Math.floor(rating);
+    const fullStars = Math.round(rating);
     const starsArray = Array.from({ length: 5 }, (_, index) => 
       index < fullStars ? '★' : '☆'
     );
