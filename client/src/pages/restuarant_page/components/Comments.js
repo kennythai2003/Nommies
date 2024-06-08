@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 
 const Comments = () => {
   const [commentsData, setCommentsData] = useState([]);
+  const [averageRating, setAverageRating] = useState(0);
 
   useEffect(() => {
     fetchReviews();
@@ -31,10 +32,28 @@ const Comments = () => {
         })
       }));
       setCommentsData(formattedData);
+      calculateAverageRating(formattedData);
     } catch (error) {
       console.error('Error fetching reviews:', error);
     }
   };
+  const calculateAverageRating = (reviews) => {
+    if (reviews.length === 0) {
+      setAverageRating(0);
+      return;
+    }
+    const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
+    const average = totalRating / reviews.length;
+    setAverageRating(average);
+  };
+  const renderStars = (rating) => {
+    const fullStars = Math.floor(rating);
+    const starsArray = Array.from({ length: 5 }, (_, index) => 
+      index < fullStars ? '★' : '☆'
+    );
+    return starsArray.join('');
+  };
+
   return (
     <section className="section__container client__container" id="client">
       <p className="client__text">
@@ -42,7 +61,7 @@ const Comments = () => {
         <span className="make-grey">to see what our customers are saying</span>
         <br></br> <br></br>
         <span className="rating-text">✧ restaurant average rating ✧</span>{" "}
-        <br></br> <span className="make-grey">★★★★</span>
+        <br></br> <span className="make-grey">{renderStars(averageRating)}</span>
       </p>
       <div className="client__swiper">
         <Swiper
@@ -66,5 +85,6 @@ const Comments = () => {
     </section>
   );
 };
+
 
 export default Comments;
