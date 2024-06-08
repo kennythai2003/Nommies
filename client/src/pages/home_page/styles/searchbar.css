@@ -1,0 +1,67 @@
+/* searchbar.css */
+.searchbar-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px; /* Increased margin to add more padding at the top */
+  margin-bottom: 50px;
+  flex-direction: column;
+}
+
+.searchbar {
+  background-color: rgba(222, 219, 219, 0.854);
+  color: rgba(128, 128, 128, 0.771);
+  width: 80%;
+  display: flex;
+  justify-content: flex-start; /* Align children to the left */
+  align-items: center; /* Align children vertically in the center */
+  border-radius: 2%;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+.input-wrapper {
+  background-color: white;
+  width: 100%;
+  border-radius: 10px;
+  height: 2.5rem;
+  padding: 0 15px;
+  box-shadow: 0px 0px 8px #ddd;
+  display: flex;
+  align-items: center;
+}
+
+.results {
+  width: 80%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px #ddd;
+  border-radius: 10px;
+  margin-top: 1rem;
+  max-height: 150px;
+  overflow-y: scroll;
+  margin: auto;
+}
+
+.result-item {
+  padding: 10px 20px;
+}
+
+.result-item:hover {
+  background-color: #efefef;
+}
+
+input {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  font-size: 1.25rem;
+  width: 100%;
+  margin-left: 5px;
+}
+
+input:focus {
+  outline: none;
+}
