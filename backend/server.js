@@ -7,6 +7,7 @@ const { signUp, logIn, googleLogin } = require("./handlers/users")
 
 connectDB()
 
+const reviewsHandler = require('./handlers/review');
 app.use(express.json({ extended: false }))
 
 const cors = require("cors")
@@ -16,7 +17,10 @@ app.post("/signUp", signUp)
 app.post("/logIn", logIn)
 app.post("/googleLogin", googleLogin)
 
-const port = process.env.PORT || 5002
+app.get('/getReviews', reviewsHandler.getReviews);
+app.post('/writeReview', reviewsHandler.writeReview);
+
+const port = process.env.PORT || 8080
 app.listen(port, () => {
 	console.log(`Listening on port ${port}`)
 })
