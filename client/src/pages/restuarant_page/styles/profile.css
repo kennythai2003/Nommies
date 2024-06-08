@@ -69,3 +69,19 @@
   margin-left: 100px;
   font-style: italic;
 }
+
+.share-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px 50px 25px 50px;
+}
+
+.share-icons Button {
+  padding: 8px 16px;
+  font-size: 16px;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
