@@ -11,227 +11,231 @@
 } */
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 /* Centering main container */
 .main-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  min-height: 100vh; /* Ensures it takes the full height of the viewport */
-  background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	min-height: 100vh; /* Ensures it takes the full height of the viewport */
+	background-color: white;
 }
 
 /* Adjusting the grid layout */
 .header__container {
-  display: grid;
-  gap: 2rem;
-  overflow: hidden;
-  justify-items: center; /* Center items in the grid */
+	display: grid;
+	gap: 2rem;
+	overflow: hidden;
+	justify-items: center; /* Center items in the grid */
 }
 
 .special__grid {
-  margin-top: 4rem;
-  display: grid;
-  gap: 1rem;
-  justify-items: center; /* Center items in the grid */
+	margin-top: 4rem;
+	display: grid;
+	gap: 1rem;
+	justify-items: center; /* Center items in the grid */
 }
 
 /* Ensure other necessary sections are centered */
 .section__container {
-  max-width: var(--max-width);
-  margin: auto;
-  padding: 5rem 1rem;
-  text-align: center;
+	max-width: var(--max-width);
+	margin: auto;
+	padding: 5rem 1rem;
+	text-align: center;
 }
 
 .section__header {
-  margin-bottom: 1rem;
-  font-size: 2.5rem;
-  font-weight: 700;
-  line-height: 3rem;
-  color: var(--text-dark);
-  text-align: center;
+	margin-bottom: 1rem;
+	font-size: 2.5rem;
+	font-weight: 700;
+	line-height: 3rem;
+	color: var(--text-dark);
+	text-align: center;
 }
 
 .section__description {
-  color: var(--text-light);
-  line-height: 1.75rem;
-  text-align: center;
+	color: var(--text-light);
+	line-height: 1.75rem;
+	text-align: center;
 }
 
 .btn {
-  padding: 0.75rem 1.5rem;
-  outline: none;
-  /* border: none; */
-  white-space: nowrap;
-  font-size: 1rem;
-  color: black;
-  background-color: white;
-  border-radius: 10px;
-  transition: 0.3s;
-  cursor: pointer;
-  border-color: grey;
+	padding: 0.75rem 1.5rem;
+	outline: none;
+	/* border: none; */
+	white-space: nowrap;
+	font-size: 1rem;
+	color: black;
+	background-color: white;
+	border-radius: 10px;
+	transition: 0.3s;
+	cursor: pointer;
+	border-color: grey;
+}
+
+p {
+	margin: 0em;
 }
 
 .btn:hover {
-  background-color: grey;
+	background-color: grey;
 }
 
 .logo a {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: black;
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: black;
 }
 
 .logo a span {
-  color: black;
+	color: black;
 }
 
 img {
-  display: flex;
-  width: 100%;
+	display: flex;
+	width: 100%;
 }
 
 a {
-  text-decoration: none;
-  transition: 0.3s;
+	text-decoration: none;
+	transition: 0.3s;
 }
 
 ul {
-  list-style: none;
+	list-style: none;
 }
 
 html,
 body {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+	font-family: "Poppins", sans-serif;
 }
 
 .header__container {
-  display: grid;
-  gap: 2rem;
-  overflow: hidden;
+	display: grid;
+	gap: 2rem;
+	overflow: hidden;
 }
 
 .header__image img {
-  max-width: 600px;
-  margin-inline: auto;
+	max-width: 600px;
+	margin-inline: auto;
 }
 
 .header__content h1 {
-  margin-bottom: 1rem;
-  font-size: 3.5rem;
-  font-weight: 700;
-  line-height: 4.5rem;
-  color: black;
-  text-align: center;
+	margin-bottom: 1rem;
+	font-size: 3.5rem;
+	font-weight: 700;
+	line-height: 4.5rem;
+	color: black;
+	text-align: center;
 }
 
 .header__content h1 span {
-  color: grey;
+	color: grey;
 }
 
 .header__content .section__description {
-  margin-bottom: 2rem;
+	margin-bottom: 2rem;
 }
 
 .header__btn {
-  text-align: center;
+	text-align: center;
 }
 
 .special__container :is(.section__header, .section__description) {
-  max-width: 600px;
-  margin-inline: auto;
+	max-width: 600px;
+	margin-inline: auto;
 }
 
 .special__grid {
-  margin-top: 4rem;
-  display: grid;
-  gap: 1rem;
+	margin-top: 4rem;
+	display: grid;
+	gap: 1rem;
 }
 
 .special__card {
-  padding: 1rem;
-  text-align: center;
-  border-radius: 2rem;
-  transition: 0.3s;
+	padding: 1rem;
+	text-align: center;
+	border-radius: 2rem;
+	transition: 0.3s;
 }
 
 .special__card:hover {
-  box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.1);
+	box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.1);
 }
 
 .special__card img {
-  max-width: 200px;
-  margin-inline: auto;
-  margin-bottom: 1rem;
-  filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.3));
+	max-width: 200px;
+	margin-inline: auto;
+	margin-bottom: 1rem;
+	filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.3));
 }
 
 .special__card h4 {
-  margin-bottom: 0.5rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: black;
+	margin-bottom: 0.5rem;
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: black;
 }
 
 .special__card p {
-  margin-bottom: 0.5rem;
-  color: black;
-  line-height: 1.75rem;
+	margin-bottom: 0.5rem;
+	color: black;
+	line-height: 1.75rem;
 }
 
 @media (width > 540px) {
-  .special__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+	.special__grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
 }
 
 @media (width > 768px) {
-  .header__container {
-    grid-template-columns: 2fr 3fr;
-    align-items: center;
-  }
+	.header__container {
+		grid-template-columns: 2fr 3fr;
+		align-items: center;
+	}
 
-  .header__content h1,
-  .header__content .section__description,
-  .header__btn {
-    text-align: left;
-  }
+	.header__content h1,
+	.header__content .section__description,
+	.header__btn {
+		text-align: left;
+	}
 
-  .header__image {
-    grid-area: 1/2/2/3;
-  }
+	.header__image {
+		grid-area: 1/2/2/3;
+	}
 
-  .special__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+	.special__grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
 }
 
 @media (width > 1024px) {
-  .special__grid {
-    gap: 2rem;
-  }
+	.special__grid {
+		gap: 2rem;
+	}
 
-  .special__card {
-    padding: 2rem;
-    border-radius: 3rem;
-  }
+	.special__card {
+		padding: 2rem;
+		border-radius: 3rem;
+	}
 }
 
 .quickbox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; /* Center vertically */
-  text-align: center;
-  margin: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center; /* Center vertically */
+	text-align: center;
+	margin: auto;
 }

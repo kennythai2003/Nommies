@@ -116,8 +116,8 @@ const SignInModal = ({ setIsModalVisible }) => {
 	}
 
 	return (
-		<div className="modal-overlay" onClick={closeModal}>
-			<div className="modal" onClick={(e) => e.stopPropagation()}>
+		<div className="modal-overlay1" onClick={closeModal}>
+			<div className="modal2" onClick={(e) => e.stopPropagation()}>
 				<div className="top-bar">
 					<img
 						className="exit-button"
