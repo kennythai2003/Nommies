@@ -93,12 +93,49 @@ const Profile = () => {
     setPhotoErrors('');
   };
   
-  const handlePhotoUpload = (e) => {
+  const handlePhotoUpload = async (e) => {
+    e.preventDefault();
     if (selectedFiles.length === 0) {
       setPhotoErrors('Please select a file to upload');
       return;
     }
-      handlePhotoClose();
+
+    console.log(selectedFiles);
+
+    const base64Files = await Promise.all(Array.from(selectedFiles).map(convertBase64));
+    console.log(base64Files);
+
+    try {
+      const response = await fetch('http://localhost:8080/uploadImage', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ myFile: base64Files[0] }),
+        });
+        
+        if (response.ok) {
+          console.log('Photo uploaded successfully!');
+          handlePhotoClose();
+        } else {
+          console.error('Error uploading photo');
+        }
+    } catch (error) {
+      console.error('Error uploading photo', error);
+    }
+  }
+
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+        fileReader.onload = () => {
+          resolve(fileReader.result);
+        };
+        fileReader.onerror = (error) => {
+          reject(error);
+        }
+    });
   }
 
   return (
@@ -199,8 +236,12 @@ const Profile = () => {
           </Modal.Header>
           <Modal.Body>
           <Form.Group controlId="formFileMultiple" className="mb-3">
-            <Form.Label>Upload multiple files</Form.Label>
-            <Form.Control type="file" multiple onChange={handlePhotoChange}/>
+            <Form.Label>Upload a image</Form.Label>
+            <Form.Control 
+              type="file"
+              accept = ".jpg, .jpeg, .png"
+              onChange={handlePhotoChange}
+              />
             {photoErrors && <div className="text-danger">{photoErrors}</div>}
           </Form.Group>
           </Modal.Body>
