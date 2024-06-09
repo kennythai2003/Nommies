@@ -1,105 +1,106 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 * {
-  font-family: "Poppins", sans-serif;
+	font-family: "Poppins", sans-serif;
 }
 
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+.modal-overlay1 {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
 }
 
-.modal {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1001;
-  width: 30%;
-  height: fit-content;
-  padding: 1em 0em 5em 0em;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  flex-direction: column;
+.modal2 {
+	background: white;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	z-index: 1001;
+	width: 30%;
+	height: fit-content;
+	padding: 1em 0em 5em 0em;
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	flex-direction: column;
+	border: 3px solid red;
 }
 
 .top-bar {
-  justify-content: end;
-  align-items: end;
-  display: flex;
-  width: 100%;
-  margin-right: 3em;
+	justify-content: end;
+	align-items: end;
+	display: flex;
+	width: 100%;
+	margin-right: 3em;
 }
 
 .profile-pic {
-  width: 4em;
+	width: 4em;
 }
 
 .exit-button {
-  width: 4em;
-  border-radius: 2em;
-  padding: 1em;
+	width: 4em;
+	border-radius: 2em;
+	padding: 1em;
 }
 
 .exit-button:hover {
-  background-color: whitesmoke;
+	background-color: whitesmoke;
 }
 
 .sign-in {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 80%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 80%;
 }
 
 .sign-up-text {
-  margin: 1em 0em 0.5em 0em;
-  font-size: 2em;
-  font-weight: 500;
+	margin: 1em 0em 0.5em 0em;
+	font-size: 2em;
+	font-weight: 500;
 }
 
 .connect-text {
-  margin-bottom: 0.75em;
+	margin-bottom: 0.75em;
 }
 
 .terms-of-service {
-  font-size: 0.75em;
-  font-weight: 300;
-  width: 100%;
-  text-wrap: wrap;
-  text-align: center;
-  margin-bottom: 0.5em;
+	font-size: 0.75em;
+	font-weight: 300;
+	width: 100%;
+	text-wrap: wrap;
+	text-align: center;
+	margin-bottom: 0.5em;
 }
 
 .sign-in-col {
-  height: fit-content;
-  padding: 0.75em 0em;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  align-items: center;
-  width: fit-content;
+	height: fit-content;
+	padding: 0.75em 0em;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	align-items: center;
+	width: fit-content;
 }
 
 .google-sign-in-option {
-  margin-bottom: 0.75em;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: fit-content;
+	margin-bottom: 0.75em;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: fit-content;
 }
 
 /* .google-sign-in-option > .sign-in-option {
@@ -112,142 +113,142 @@
 } */
 
 .email-sign-in-option {
-  height: 100%;
-  padding: 0.5em;
-  border: 1px solid #ddd;
-  background-color: white;
-  border-radius: 0.25em;
-  display: flex;
-  flex-direction: row;
-  width: 100%;
+	height: 100%;
+	padding: 0.5em;
+	border: 1px solid #ddd;
+	background-color: white;
+	border-radius: 0.25em;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
 }
 
 .email-sign-in-option:hover {
-  background-color: whitesmoke;
+	background-color: whitesmoke;
 }
 
 .mail-icon {
-  height: 1.5em;
-  margin-right: 0.2em;
+	height: 1.5em;
+	margin-right: 0.2em;
 }
 
 .log-in-option {
-  margin-top: 0.75em;
-  font-weight: 700;
+	margin-top: 0.75em;
+	font-weight: 700;
 }
 
 .log-in-option b {
-  color: #007bff;
+	color: #007bff;
 }
 
 .log-in-option b:hover {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
 .name-group {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: space-between;
-  align-content: space-evenly;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-between;
+	align-content: space-evenly;
 }
 
 #firstName,
 #lastName {
-  width: 65%;
-  padding: 10px;
-  border-radius: 4px;
-  border: 1px solid #ddd;
-  margin-bottom: 15px;
+	width: 65%;
+	padding: 10px;
+	border-radius: 4px;
+	border: 1px solid #ddd;
+	margin-bottom: 15px;
 }
 
 #firstName:focus,
 #lastName:focus {
-  border-color: #007bff;
-  outline: none;
+	border-color: #007bff;
+	outline: none;
 }
 
 .spacer {
-  width: 5%;
+	width: 5%;
 }
 
 .line-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  text-align: center;
-  margin: 1.75em 0em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	text-align: center;
+	margin: 1.75em 0em;
 }
 
 .line {
-  flex: 1;
-  border-bottom: 1px solid #ccc;
-  height: 1px;
+	flex: 1;
+	border-bottom: 1px solid #ccc;
+	height: 1px;
 }
 
 .or-text {
-  padding: 0 10px;
-  background: white;
-  color: #888;
+	padding: 0 10px;
+	background: white;
+	color: #888;
 }
 
 .line-container::before,
 .line-container::after {
-  content: "";
-  flex: 1;
-  border-bottom: 1px solid #ccc;
-  height: 1px;
+	content: "";
+	flex: 1;
+	border-bottom: 1px solid #ccc;
+	height: 1px;
 }
 
 .line-container .or-text {
-  position: relative;
-  z-index: 1;
+	position: relative;
+	z-index: 1;
 }
 
 .form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 20em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 20em;
 }
 
 .login-form {
-  width: 300px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
+	width: 300px;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 8px;
 }
 
 .form-group {
-  margin-bottom: 15px;
-  width: 100%;
+	margin-bottom: 15px;
+	width: 100%;
 }
 
 .form-group input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	box-sizing: border-box;
 }
 
 .form-group input:focus {
-  border-color: #007bff;
-  outline: none;
+	border-color: #007bff;
+	outline: none;
 }
 
 .submit-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
+	width: 100%;
+	padding: 10px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
 }
 
 .submit-button:hover {
-  background-color: #0056b3;
+	background-color: #0056b3;
 }
