@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const User = require("../models/User.js")
+const User = require("../dataModels/User.js")
 const bcrypt = require("bcryptjs")
 const { OAuth2Client } = require("google-auth-library")
 const client = new OAuth2Client(

@@ -1,4 +1,4 @@
-const User = require("../models/User")
+const User = require("../dataModels/User")
 
 const checkEmailExists = async (req, res) => {
 	try {
