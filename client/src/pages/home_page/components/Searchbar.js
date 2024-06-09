@@ -2,6 +2,9 @@
 import "../styles/searchbar.css"; // Ensure you create and style this CSS file
 import {FaSearch} from "react-icons/fa";
 import React, {useState} from "react";
+import {Outlet, Link} from "react-router-dom";
+
+
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
@@ -41,11 +44,18 @@ const SearchBar = () => {
       </div>
       <div className="results">
         {results.map((results, id) => {
-          return <div key={id} className="result-item" onClick={(e) => alert("Clicked!")}>{results.name}</div>;
+          return (
+            <Link key={id} to={`/restaurant`} className="result-item">
+              {results.name}
+            </Link>
+          );
         })}
       </div>
+      <Outlet></Outlet>
     </div>
   );
 };
+
+//{`/restaurant/${result.id}`}
 
 export default SearchBar;
