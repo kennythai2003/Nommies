@@ -10,7 +10,7 @@ function LogOutBtn() {
 
 	async function logOut() {
 		try {
-			await axios.get("http://localhost:8080/auth/logOut")
+			await axios.post("http://localhost:8080/auth/logOut")
 			await getLoggedIn()
 			navigate("/")
 		} catch (err) {
