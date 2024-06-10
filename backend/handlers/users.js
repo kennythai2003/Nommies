@@ -1,64 +1,108 @@
 const mongoose = require("mongoose")
 const User = require("../dataModels/User.js")
 const bcrypt = require("bcryptjs")
+const jwt = require("jsonwebtoken")
+
 const { OAuth2Client } = require("google-auth-library")
 const client = new OAuth2Client(
 	"679532241648-krbdoaos47u3u8t0go37b3865mn7q2k9.apps.googleusercontent.com"
 )
 
 async function signUp(req, res) {
-	const { email, password, firstname, lastname } = req.body
-
 	try {
-		let user = await User.findOne({ email })
-		if (user) {
+		const { email, password, firstname, lastname } = req.body
+		let userCheck = await User.findOne({ email })
+		if (userCheck) {
 			return res.status(400).json({ message: "Email already exists" })
 		}
 
 		const salt = await bcrypt.genSalt(10)
 		const hashedPassword = await bcrypt.hash(password, salt)
-		user = new User({
+		let user = new User({
 			email,
 			password: hashedPassword,
 			firstname,
 			lastname,
 		})
 
-		await user.save()
+		const savedUser = await user.save()
 
-        // Function for following: logInSuccessfull() and signUpSuccessfull()
-        // Functionality needed: update profile on navBar, prompt for PFP; redirect to profile page?
+		const token = jwt.sign(
+			{
+				user: savedUser._id,
+			},
+			process.env.JWT_SECRET
+		)
 
-		res.status(201).json({ message: "User registered successfully!" })
+		res.cookie("token", token, {
+			httpOnly: true,
+		})
+			.status(201)
+			.json({ message: "User registered successfully!" })
 	} catch (error) {
 		res.status(500).json({ message: "Error registering user" })
 	}
 }
 
 async function logIn(req, res) {
-	const { email, password } = req.body
-
 	try {
-		const user = await User.findOne({ email })
-		if (!user) {
+		const { email, password } = req.body
+		const existingUser = await User.findOne({ email })
+		if (!existingUser) {
 			return res
-				.status(400)
+				.status(401)
 				.json({ message: "Invalid email or password" })
 		}
 
-		const isMatch = await bcrypt.compare(password, user.password)
+		const isMatch = await bcrypt.compare(password, existingUser.password)
 		if (!isMatch) {
 			return res
-				.status(400)
+				.status(401)
 				.json({ message: "Invalid email or password" })
 		}
 
-		// Function for following: logInSuccessfull() and signUpSuccessfull()
-		// Functionality needed: update profile on navBar, prompt for PFP; redirect to profile page?
+		const token = jwt.sign(
+			{
+				user: existingUser._id,
+			},
+			process.env.JWT_SECRET
+		)
 
-		res.status(200).json({ message: "Log in successful!" })
+		res.cookie("token", token, {
+			httpOnly: true,
+		})
+			.status(200)
+			.json({ message: "Log in successful!" })
 	} catch (error) {
 		res.status(500).json({ message: "Error logging in" })
+	}
+}
+
+async function loggedIn(req, res) {
+	try {
+		const token = req.cookies.token
+		if (!token) return res.json(false)
+
+		jwt.verify(token, process.env.JWT_SECRET)
+
+		res.send(true)
+	} catch (err) {
+		res.json(false)
+	}
+}
+
+async function logOut(res) {
+	try {
+		res.cookie("token", "", {
+			httpOnly: true,
+			expires: new Date(0),
+			secure: true,
+			sameSite: "none",
+		})
+			.status(200)
+			.json({ message: "Log out successful!" })
+	} catch (error) {
+		res.status(500).json({ message: "Log out failed." })
 	}
 }
 
@@ -90,5 +134,7 @@ async function googleLogin(req, res) {
 module.exports = {
 	signUp,
 	logIn,
+	logOut,
+	loggedIn,
 	googleLogin,
 }
