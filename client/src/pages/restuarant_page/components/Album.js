@@ -11,7 +11,7 @@ const Album = () => {
     { src: "hotpot.gif" },
   ];
 
-  const insideOutsideImages = [{ src: "cake.gif" }, { src: "steak.gif" }];
+  const insideOutsideImages = [{ src: "steak.gif" }, { src: "coffee.gif" }];
 
   useEffect(() => {
       const fetchImages = async () => {
@@ -29,10 +29,10 @@ const Album = () => {
   }, []);
 
   return (
-    <section className="albums">
+    <section className="albums user-profile-albums">
       <AlbumCarousel albumName="food" images={foodImages} />
-      <AlbumCarousel albumName="menu" images={menuImages} />
       <AlbumCarousel albumName="inside/outside" images={insideOutsideImages} />
+      <AlbumCarousel albumName="menu" images={menuImages} />
     </section>
   );
 };

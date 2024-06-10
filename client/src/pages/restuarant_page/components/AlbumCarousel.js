@@ -1,3 +1,4 @@
+// AlbumCarousel.js
 import React, { useState } from "react";
 import "../styles/album.css";
 
@@ -18,23 +19,19 @@ const AlbumCarousel = ({ albumName, images }) => {
   };
 
   return (
-    <div className="album">
-      <p className="albumname">
-        <strong>{albumName}</strong>
-      </p>
+    <div className="album user-profile-album">
+      <p className="albumname">{albumName}</p>
       <div className="carousel">
         <div
           className="carousel-container"
           style={{
             transform: `translateX(-${(currentSlide * 100) / totalSlides}%)`,
+            width: `${totalSlides * 100}%`,
+            "--total-slides": totalSlides,
           }}
         >
           {images.map((image, index) => (
-            <CarouselSlide
-              key={index}
-              src={image.src}
-              alt={`Slide ${index + 1}`}
-            />
+            <CarouselSlide key={index} src={image.src} alt={`Slide ${index + 1}`} />
           ))}
         </div>
         <button className="left" onClick={previousSlide}>
