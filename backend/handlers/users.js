@@ -31,11 +31,13 @@ async function signUp(req, res) {
 			{
 				user: savedUser._id,
 			},
-			process.env.JWT_SECRET
+			process.env.JWT_SECRET,
+			{ expiresIn: "1h" }
 		)
 
 		res.cookie("token", token, {
 			httpOnly: true,
+			secure: true,
 		})
 			.status(201)
 			.json({ message: "User registered successfully!" })
@@ -65,11 +67,13 @@ async function logIn(req, res) {
 			{
 				user: existingUser._id,
 			},
-			process.env.JWT_SECRET
+			process.env.JWT_SECRET,
+			{ expiresIn: "1h" }
 		)
 
 		res.cookie("token", token, {
 			httpOnly: true,
+			secure: true,
 		})
 			.status(200)
 			.json({ message: "Log in successful!" })
@@ -102,7 +106,7 @@ async function logOut(req, res) {
 			.status(200)
 			.json({ message: "Log out successful!" })
 	} catch (error) {
-        res.status(500).json({ message: "Log out failed." })
+		res.status(500).json({ message: "Log out failed." })
 	}
 }
 
@@ -119,14 +123,29 @@ async function googleLogin(req, res) {
 		const email = payload.email
 
 		let user = await User.findOne({ email })
-		if (user) {
-			return res
-				.status(200)
-				.json({ message: "User logged in successfully!" })
-		} else {
-			return res.status(400).json({ message: "Email not recognized" })
+		if (!user) {
+			user = new User({
+				email,
+				firstname: payload.given_name,
+				lastname: payload.family_name,
+				googleId: payload.sub,
+			})
+			user = await user.save()
 		}
+
+		const jwtToken = jwt.sign({ user: user._id }, process.env.JWT_SECRET, {
+			expiresIn: "1h",
+		})
+
+		res.cookie("token", jwtToken, {
+			httpOnly: true,
+			secure: true,
+			sameSite: "none",
+		})
+			.status(200)
+			.json({ message: "User logged in successfully!" })
 	} catch (error) {
+		console.error(error)
 		res.status(500).json({ message: "Error logging in with Google" })
 	}
 }
