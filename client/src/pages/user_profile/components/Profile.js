@@ -5,6 +5,7 @@ import ProfileImage from "./ProfileImage";
 import Name from "./Name";
 import Quote from "./Quote";
 import "../styles/profile.css";
+import LogOutBtn from "./LogOutButton";
 
 function Profile() {
   return (
@@ -17,7 +18,8 @@ function Profile() {
           <Name name="kenny thai" />
           <h3 className="friends-count">789 followers</h3>
         </div>
-        <div className="editting-buttons">
+        <div className="editing-buttons">
+          <LogOutBtn></LogOutBtn>
           <button className="edit-profile-button">edit profile</button>
           <button className="edit-profile-button">add an album</button>
         </div>

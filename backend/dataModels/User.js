@@ -1,40 +1,13 @@
-// const mongoose = require("mongoose")
-
-// const UserSchema = new mongoose.Schema({
-// 	email: {
-// 		type: String,
-// 		required: true,
-// 		unique: true,
-// 	},
-// 	firstName: {
-// 		type: String,
-// 		require: true,
-// 		unique: false,
-// 	},
-//     lastName: {
-//         type: String,
-// 		require: true,
-// 		unique: false,
-//     },
-// 	password: {
-// 		type: String,
-// 		require: true,
-// 		unique: false,
-// 	},
-// })
-
-// module.exports = mongoose.model("User", UserSchema, "users")
-
 const mongoose = require("mongoose")
 
 const UserSchema = new mongoose.Schema({
 	firstname: {
 		type: String,
-		required: false, 
+		required: false,
 	},
 	lastname: {
 		type: String,
-		required: false, 
+		required: false,
 	},
 	email: {
 		type: String,
@@ -44,13 +17,13 @@ const UserSchema = new mongoose.Schema({
 	password: {
 		type: String,
 		required: function () {
-			return !this.googleId // Password is required if not a Google user
+			return !this.googleId
 		},
 	},
 	googleId: {
 		type: String,
 		unique: true,
-		sparse: true, 
+		sparse: true,
 	},
 	picture: {
 		type: String,
