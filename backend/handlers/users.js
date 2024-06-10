@@ -91,7 +91,7 @@ async function loggedIn(req, res) {
 	}
 }
 
-async function logOut(res) {
+async function logOut(req, res) {
 	try {
 		res.cookie("token", "", {
 			httpOnly: true,
@@ -102,7 +102,7 @@ async function logOut(res) {
 			.status(200)
 			.json({ message: "Log out successful!" })
 	} catch (error) {
-		res.status(500).json({ message: "Log out failed." })
+        res.status(500).json({ message: "Log out failed." })
 	}
 }
 

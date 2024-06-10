@@ -37,7 +37,7 @@ const authRouter = express.Router()
 authRouter.post("/signUp", signUp)
 authRouter.post("/logIn", logIn)
 authRouter.post("/googleLogin", googleLogin)
-authRouter.get("/logOut", logOut)
+authRouter.post("/logOut", logOut)
 authRouter.get("/loggedIn", loggedIn)
 app.use("/auth", authRouter)
 
