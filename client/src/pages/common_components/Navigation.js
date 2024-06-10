@@ -2,9 +2,15 @@ import "./navigation.css"
 import { Outlet, Link } from "react-router-dom"
 import AuthContext from "../../context/AuthContext"
 import React, { useContext } from "react"
+import AppContext from "../../context/AppContext"
 
 function Navigation() {
 	const { loggedIn } = useContext(AuthContext)
+	const { modalVisible, setModalVisible } = useContext(AppContext)
+
+	const openModal = () => {
+		setModalVisible(true)
+	}
 
 	return (
 		<header>
@@ -47,7 +53,9 @@ function Navigation() {
 									alt="profile"
 									className="nav-icons"
 								></img>
-								<Link to="/user">SIGN IN</Link>
+								<Link to="/landing" onClick={openModal}>
+									sign in
+								</Link>
 							</li>
 						)}
 					</ul>

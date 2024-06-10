@@ -7,22 +7,25 @@ import Home from "./pages/home_page/Home"
 
 import axious from "axios"
 import { AuthContextProvider } from "./context/AuthContext"
+import { AppContextProvider } from "./context/AppContext"
 
 axious.defaults.withCredentials = true
 
 export default function App() {
 	return (
 		<AuthContextProvider>
-			<BrowserRouter>
-				<Routes>
-					<Route index element={<Landing />} />
-					<Route path="home" element={<Home />} />
-					<Route path="user" element={<User />} />
-					<Route path="landing" element={<Landing />} />
-					<Route path="restaurant" element={<Restaurant />} />
-					<Route path="*" element={<Landing />} />
-				</Routes>
-			</BrowserRouter>
+			<AppContextProvider>
+				<BrowserRouter>
+					<Routes>
+						<Route index element={<Landing />} />
+						<Route path="home" element={<Home />} />
+						<Route path="user" element={<User />} />
+						<Route path="landing" element={<Landing />} />
+						<Route path="restaurant" element={<Restaurant />} />
+						<Route path="*" element={<Landing />} />
+					</Routes>
+				</BrowserRouter>
+			</AppContextProvider>
 		</AuthContextProvider>
 	)
 }

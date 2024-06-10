@@ -1,15 +1,17 @@
 import "../styles/landing.css"
 import SignInModal from "./SignInModal.js"
-import React, { useState, useContext } from "react"
+import React, { useContext } from "react"
 import AuthContext from "../../../context/AuthContext.js"
+import AppContextProvider from "../../../context/AppContext.js"
 
 function Landing() {
 	const { loggedIn } = useContext(AuthContext)
 
-	const [isModalVisible, setIsModalVisible] = useState(false)
+	// const [isModalVisible, setIsModalVisible] = useState(false)
+	const { modalVisible, setModalVisible } = useContext(AppContextProvider)
 
 	const showSignInModal = () => {
-		setIsModalVisible(true)
+		setModalVisible(true)
 	}
 
 	return (
@@ -34,15 +36,7 @@ function Landing() {
 								onClick={showSignInModal}
 							>
 								<p> sign in </p>
-								<div>
-									{isModalVisible && (
-										<SignInModal
-											setIsModalVisible={
-												setIsModalVisible
-											}
-										/>
-									)}
-								</div>
+								<div>{modalVisible && <SignInModal />}</div>
 							</button>
 						</div>
 					)}

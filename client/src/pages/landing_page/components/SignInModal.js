@@ -1,11 +1,14 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { GoogleLogin } from "@react-oauth/google"
 import "../styles/signinmodal.css"
 import axios from "axios"
+import AppContext from "../../../context/AppContext.js"
 
-const SignInModal = ({ setIsModalVisible }) => {
+const SignInModal = () => {
+	const { modalVisible, setModalVisible } = useContext(AppContext)
+
 	const closeModal = () => {
-		setIsModalVisible(false)
+		setModalVisible(false)
 		revertToOriginal()
 	}
 
@@ -97,26 +100,6 @@ const SignInModal = ({ setIsModalVisible }) => {
 		}
 	}
 
-	const handleSumbitLogOut = async (response) => {
-		try {
-			const googleToken = response.credential
-			const result = await axios.post(
-				"http://localhost:8080/auth/logOut",
-				{
-					token: googleToken,
-				}
-			)
-
-			if (result.data.message === "Log out successful!") {
-				alert("Log out successful!")
-				closeModal()
-			}
-		} catch (error) {
-			console.error("Error logging in with Google", error)
-			alert("Error logging in with Google")
-		}
-	}
-
 	const handleGoogleSuccess = async (response) => {
 		try {
 			const googleToken = response.credential
@@ -140,8 +123,6 @@ const SignInModal = ({ setIsModalVisible }) => {
 			alert("Error logging in with Google")
 		}
 	}
-
-	// ADD LOGOUT BUTTON
 
 	return (
 		<div className="modal-overlay1" onClick={closeModal}>
