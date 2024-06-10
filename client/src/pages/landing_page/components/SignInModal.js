@@ -1,11 +1,14 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { GoogleLogin } from "@react-oauth/google"
 import "../styles/signinmodal.css"
 import axios from "axios"
+import AppContext from "../../../context/AppContext.js"
 
-const SignInModal = ({ setIsModalVisible }) => {
+const SignInModal = () => {
+	const { modalVisible, setModalVisible } = useContext(AppContext)
+
 	const closeModal = () => {
-		setIsModalVisible(false)
+		setModalVisible(false)
 		revertToOriginal()
 	}
 
@@ -49,12 +52,15 @@ const SignInModal = ({ setIsModalVisible }) => {
 		e.preventDefault()
 
 		try {
-			const response = await axios.post("http://localhost:5001/signUp", {
-				email: emailSignUp,
-				password: passwordSignUp,
-				firstname: firstName,
-				lastname: lastName,
-			})
+			const response = await axios.post(
+				"http://localhost:8080/auth/signUp",
+				{
+					email: emailSignUp,
+					password: passwordSignUp,
+					firstname: firstName,
+					lastname: lastName,
+				}
+			)
 			console.log(response.data)
 			if (response.data.message === "User registered successfully!") {
 				alert("Registration successful!")
@@ -74,10 +80,13 @@ const SignInModal = ({ setIsModalVisible }) => {
 		e.preventDefault()
 
 		try {
-			const response = await axios.post("http://localhost:5001/logIn", {
-				email: emailLogIn,
-				password: passwordLogIn,
-			})
+			const response = await axios.post(
+				"http://localhost:8080/auth/logIn",
+				{
+					email: emailLogIn,
+					password: passwordLogIn,
+				}
+			)
 			console.log(response.data)
 			if (response.data.message === "Log in successful!") {
 				alert("Login successful!")
@@ -95,7 +104,7 @@ const SignInModal = ({ setIsModalVisible }) => {
 		try {
 			const googleToken = response.credential
 			const result = await axios.post(
-				"http://localhost:5001/googleLogin",
+				"http://localhost:8080/auth/googleLogin",
 				{
 					token: googleToken,
 				}

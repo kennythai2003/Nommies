@@ -3,24 +3,43 @@ const app = express()
 const path = require("path")
 const mongoose = require("mongoose")
 const connectDB = require("./database")
-const { signUp, logIn, googleLogin } = require("./handlers/users")
-const bodyParser = require('body-parser')
+const cookieparser = require("cookie-parser")
+const {
+	signUp,
+	logIn,
+	logOut,
+	googleLogin,
+	loggedIn,
+} = require("./handlers/users")
 
 connectDB()
 
-const reviewsHandler = require('./handlers/review');
-const restaurantHandler = require('./handlers/restaurant'); 
-const imageHandler = require('./handlers/images');
-app.use(express.json({ limit: '50mb'}));
-app.use(express.urlencoded({ limit: '50mb' }));
-app.use(bodyParser.json({ limit: '50mb' }));
+const reviewsHandler = require("./handlers/review")
+const restaurantHandler = require("./handlers/restaurant")
+
+app.use(cookieparser())
+app.use(express.json({ extended: false }))
 
 const cors = require("cors")
-app.use(cors())
+app.use(
+	cors({
+		origin: ["http://localhost:3000"],
+		credentials: true,
+	})
+)
 
-app.post("/signUp", signUp)
-app.post("/logIn", logIn)
-app.post("/googleLogin", googleLogin)
+// app.post("/signUp", signUp)
+// app.post("/logIn", logIn)
+// app.post("/googleLogin", googleLogin)
+// app.post("/logOut", logOut)
+
+const authRouter = express.Router()
+authRouter.post("/signUp", signUp)
+authRouter.post("/logIn", logIn)
+authRouter.post("/googleLogin", googleLogin)
+authRouter.post("/logOut", logOut)
+authRouter.get("/loggedIn", loggedIn)
+app.use("/auth", authRouter)
 
 app.get('/getReviews', reviewsHandler.getReviews);
 app.post('/writeReview', reviewsHandler.writeReview);
@@ -28,8 +47,7 @@ app.get('/getRestaurants', restaurantHandler.getRestaurants);
 app.get('/getImages', imageHandler.getImages);
 app.post('/uploadImage', imageHandler.uploadImage);
 
-const port = 8080;
+const port = 8080
 app.listen(port, () => {
 	console.log(`Listening on port ${port}`)
 })
-
