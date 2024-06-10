@@ -49,12 +49,15 @@ const SignInModal = ({ setIsModalVisible }) => {
 		e.preventDefault()
 
 		try {
-			const response = await axios.post("http://localhost:5001/signUp", {
-				email: emailSignUp,
-				password: passwordSignUp,
-				firstname: firstName,
-				lastname: lastName,
-			})
+			const response = await axios.post(
+				"http://localhost:8080/auth/signUp",
+				{
+					email: emailSignUp,
+					password: passwordSignUp,
+					firstname: firstName,
+					lastname: lastName,
+				}
+			)
 			console.log(response.data)
 			if (response.data.message === "User registered successfully!") {
 				alert("Registration successful!")
@@ -74,10 +77,13 @@ const SignInModal = ({ setIsModalVisible }) => {
 		e.preventDefault()
 
 		try {
-			const response = await axios.post("http://localhost:5001/logIn", {
-				email: emailLogIn,
-				password: passwordLogIn,
-			})
+			const response = await axios.post(
+				"http://localhost:8080/auth/logIn",
+				{
+					email: emailLogIn,
+					password: passwordLogIn,
+				}
+			)
 			console.log(response.data)
 			if (response.data.message === "Log in successful!") {
 				alert("Login successful!")
@@ -91,11 +97,31 @@ const SignInModal = ({ setIsModalVisible }) => {
 		}
 	}
 
+	const handleSumbitLogOut = async (response) => {
+		try {
+			const googleToken = response.credential
+			const result = await axios.post(
+				"http://localhost:8080/auth/logOut",
+				{
+					token: googleToken,
+				}
+			)
+
+			if (result.data.message === "Log out successful!") {
+				alert("Log out successful!")
+				closeModal()
+			}
+		} catch (error) {
+			console.error("Error logging in with Google", error)
+			alert("Error logging in with Google")
+		}
+	}
+
 	const handleGoogleSuccess = async (response) => {
 		try {
 			const googleToken = response.credential
 			const result = await axios.post(
-				"http://localhost:5001/googleLogin",
+				"http://localhost:8080/auth/googleLogin",
 				{
 					token: googleToken,
 				}
@@ -114,6 +140,8 @@ const SignInModal = ({ setIsModalVisible }) => {
 			alert("Error logging in with Google")
 		}
 	}
+
+	// ADD LOGOUT BUTTON
 
 	return (
 		<div className="modal-overlay1" onClick={closeModal}>

@@ -1,45 +1,61 @@
-import "./navigation.css";
-import { Outlet, Link } from "react-router-dom";
+import "./navigation.css"
+import { Outlet, Link } from "react-router-dom"
+import AuthContext from "../../context/AuthContext"
+import React, { useContext } from "react"
 
 function Navigation() {
-  return (
-    <header>
-      <nav id="desktop-nav">
-        <div className="logo">
-          <p className="logo-text">nommies</p>
-        </div>
-        <div>
-          <ul className="nav-links">
-            <li>
-              <img
-                src="home_button.jpeg"
-                alt="home"
-                className="nav-icons"
-              ></img>
-              <Link to="/landing">home</Link>
-            </li>
-            <li>
-              <img
-                src="bell.png"
-                alt="notifications"
-                className="nav-icons"
-              ></img>
-              <Link to="/home">notifications</Link>
-            </li>
-            <li>
-              <img
-                src="user_prof.jpeg"
-                alt="profile"
-                className="nav-icons"
-              ></img>
-              <Link to="/user">your profile</Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <Outlet></Outlet>
-    </header>
-  );
+	const { loggedIn } = useContext(AuthContext)
+
+	return (
+		<header>
+			<nav id="desktop-nav">
+				<div className="logo">
+					<p className="logo-text">nommies</p>
+				</div>
+				<div>
+					<ul className="nav-links">
+						<li>
+							<img
+								src="home_button.jpeg"
+								alt="home"
+								className="nav-icons"
+							></img>
+							<Link to="/landing">home</Link>
+						</li>
+						<li>
+							<img
+								src="bell.png"
+								alt="notifications"
+								className="nav-icons"
+							></img>
+							<Link to="/home">notifications</Link>
+						</li>
+						{loggedIn === true && (
+							<li>
+								<img
+									src="user_prof.jpeg"
+									alt="profile"
+									className="nav-icons"
+								></img>
+								<Link to="/user">your profile</Link>
+							</li>
+						)}
+						{loggedIn === false && (
+							<li>
+								<img
+									src="user_prof.jpeg"
+									alt="profile"
+									className="nav-icons"
+								></img>
+								<Link to="/user">SIGN IN</Link>
+							</li>
+						)}
+					</ul>
+				</div>
+			</nav>
+			<Outlet></Outlet>
+		</header>
+	)
 }
 
-export default Navigation;
+export default Navigation
