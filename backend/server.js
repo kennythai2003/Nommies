@@ -41,9 +41,11 @@ authRouter.post("/logOut", logOut)
 authRouter.get("/loggedIn", loggedIn)
 app.use("/auth", authRouter)
 
-app.get("/getReviews", reviewsHandler.getReviews)
-app.post("/writeReview", reviewsHandler.writeReview)
-app.get("/getRestaurants", restaurantHandler.getRestaurants)
+app.get('/getReviews', reviewsHandler.getReviews);
+app.post('/writeReview', reviewsHandler.writeReview);
+app.get('/getRestaurants', restaurantHandler.getRestaurants);
+app.get('/getImages', imageHandler.getImages);
+app.post('/uploadImage', imageHandler.uploadImage);
 
 const port = 8080
 app.listen(port, () => {

@@ -1,14 +1,9 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import AlbumCarousel from "./AlbumCarousel";
 import "../styles/album.css";
 
 const Album = () => {
-  const foodImages = [
-    { src: "explore.gif" },
-    { src: "cake.gif" },
-    { src: "hotpot.gif" },
-    //add more here dynamically
-  ];
+  const [foodImages, setFoodImages] = useState([]); 
 
   const menuImages = [
     { src: "steak.gif" },
@@ -16,13 +11,28 @@ const Album = () => {
     { src: "hotpot.gif" },
   ];
 
-  const insideOutsideImages = [{ src: "cake.gif" }, { src: "steak.gif" }];
+  const insideOutsideImages = [{ src: "steak.gif" }, { src: "coffee.gif" }];
+
+  useEffect(() => {
+      const fetchImages = async () => {
+        try {
+          const response = await fetch("http://localhost:8080/getImages");
+          const data = await response.json();
+          const foodImageArray = data.map((image) => ({ src : image.myFile }));
+          setFoodImages(foodImageArray);
+        }
+        catch (error) {
+          console.error('Error fetching images', error);
+        }
+      };
+      fetchImages();
+  }, []);
 
   return (
-    <section className="albums">
+    <section className="albums user-profile-albums">
       <AlbumCarousel albumName="food" images={foodImages} />
-      <AlbumCarousel albumName="menu" images={menuImages} />
       <AlbumCarousel albumName="inside/outside" images={insideOutsideImages} />
+      <AlbumCarousel albumName="menu" images={menuImages} />
     </section>
   );
 };
