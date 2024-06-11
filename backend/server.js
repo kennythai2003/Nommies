@@ -58,8 +58,6 @@ authRouter.get("/loggedIn", loggedIn)
 authRouter.get("/users", getUsers)
 
 authRouter.get("/profile", auth, authOwnership, getSelfProfile)
-
-authRouter.get("/profile/:userId", auth, authOwnership, getUserProfile)
 authRouter.put(
 	"/profile",
 	auth,
@@ -73,6 +71,7 @@ app.post('/writeReview', reviewsHandler.writeReview);
 app.get('/getRestaurants', restaurantHandler.getRestaurants);
 app.get('/getImages', imageHandler.getImages);
 app.post('/uploadImage', imageHandler.uploadImage);
+authRouter.get("/profile/:userId", auth, authOwnership, getUserProfile)
 
 const port = 8080
 app.listen(port, () => {

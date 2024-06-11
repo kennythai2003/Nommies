@@ -212,29 +212,13 @@ async function getSelfProfile(req, res) {
 
 async function getUserProfile(req, res) {
 	try {
-		const userToViewId = req.params.userId
-		const loggedInUserId = req.user 
-
-		console.log(loggedInUserId)
-		console.log(userToViewId)
-
-		if (userToViewId === loggedInUserId) {
-			return res.status(403).json({
-				message:
-					"You cannot view your own profile through this endpoint",
-			})
-		}
-
-		const user = await User.findById(userToViewId).select("-password")
-
-		if (!user) {
-			return res.status(404).json({ message: "User not found" })
-		}
-
-		res.json(user)
-	} catch (error) {
-		console.error(error)
-		res.status(500).json({ message: "Error fetching user profile" })
+		const users = await User.find(
+			{},
+			"firstname lastname followers quote profileImage"
+		)
+		res.json(users)
+	} catch (err) {
+		res.status(500).json({ message: err.message })
 	}
 }
 
@@ -292,10 +276,13 @@ async function updateProfile(req, res) {
 
 async function getUsers(req, res) {
 	try {
-		const users = await User.find({}, "firstname lastname _id")
+		const users = await User.find(
+			{},
+			"firstname lastname followers quote profileImage"
+		)
 		res.json(users)
-	} catch (error) {
-		res.status(500).json({ message: "Error fetching users" })
+	} catch (err) {
+		res.status(500).json({ message: err.message })
 	}
 }
 
