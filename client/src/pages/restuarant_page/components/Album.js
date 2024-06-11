@@ -29,7 +29,7 @@ const Album = () => {
   }, []);
 
   return (
-    <section className="albums user-profile-albums">
+    <section className="albums rest-profile-albums">
       <AlbumCarousel albumName="food" images={foodImages} />
       <AlbumCarousel albumName="inside/outside" images={insideOutsideImages} />
       <AlbumCarousel albumName="menu" images={menuImages} />

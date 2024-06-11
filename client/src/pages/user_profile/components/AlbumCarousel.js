@@ -19,9 +19,9 @@ const AlbumCarousel = ({ albumName, slides }) => {
   return (
     <div className="album user-profile-album">
       <p className="albumname">{albumName}</p>
-      <div className="carousel">
+      <div className="user-carousel">
         <div
-          className="carousel-container"
+          className="user-carousel-container"
           style={{
             transform: `translateX(-${(currentSlide * 100) / totalSlides}%)`,
             width: `${totalSlides * 100}%`,

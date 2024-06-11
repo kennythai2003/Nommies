@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "../styles/album.css";
 
 const CarouselSlide = ({ src, alt }) => (
-  <img src={src} alt={alt} className="carousel-slide" />
+  <img src={src} alt={alt} className="rest-carousel-slide" />
 );
 
 const AlbumCarousel = ({ albumName, images }) => {
@@ -19,11 +19,11 @@ const AlbumCarousel = ({ albumName, images }) => {
   };
 
   return (
-    <div className="album user-profile-album">
+    <div className="album rest-profile-album">
       <p className="albumname">{albumName}</p>
-      <div className="carousel">
+      <div className="rest-carousel">
         <div
-          className="carousel-container"
+          className="rest-carousel-container"
           style={{
             transform: `translateX(-${(currentSlide * 100) / totalSlides}%)`,
             width: `${totalSlides * 100}%`,

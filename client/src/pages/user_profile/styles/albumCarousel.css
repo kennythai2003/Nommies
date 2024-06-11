@@ -1,17 +1,17 @@
 /* albumCarousel.css */
-.user-profile-album .carousel {
+.user-profile-album .user-carousel {
 	position: relative;
 	width: 100%;
 	overflow: hidden;
 }
 
-.user-profile-album .carousel-container {
+.user-profile-album .user-carousel-container {
 	display: flex;
 	transition: transform 0.5s ease-in-out;
 	height: auto;
 }
 
-.user-profile-album .carousel button {
+.user-profile-album .user-carousel button {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
@@ -22,11 +22,11 @@
 	cursor: pointer;
 }
 
-.user-profile-album .carousel button.left {
+.user-profile-album .user-carousel button.left {
 	left: 0;
 }
 
-.user-profile-album .carousel button.right {
+.user-profile-album .user-carousel button.right {
 	right: 0;
 }
 
@@ -37,6 +37,7 @@
 	align-items: center;
   padding: 3em 2em;
 }
+
 .follow-button {
 	position: relative;
 	background-color: #007bff;

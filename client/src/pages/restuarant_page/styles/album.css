@@ -1,5 +1,5 @@
 /* album.css */
-.user-profile-albums {
+.rest-profile-albums {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -7,7 +7,7 @@
   background-color: #ffffff;
 }
 
-.user-profile-album {
+.rest-profile-album {
   background-color: #ffffff;
   padding: 10px;
   margin: 20px;
@@ -17,7 +17,7 @@
   border: 2px solid rgba(138, 135, 135, 0.483);
 }
 
-.user-profile-album .albumname {
+.rest-profile-album .albumname {
   background-color: rgba(222, 219, 219, 0.854);
   padding: 10px;
   font-size: 16px;
@@ -27,25 +27,26 @@
   color: black;
 }
 
-.carousel {
+.rest-carousel {
   position: relative;
   width: 100%;
   overflow: hidden;
 }
 
-.carousel-container {
+.rest-carousel-container {
   display: flex;
   transition: transform 0.5s ease-in-out;
+  height: auto;
+  align-items: center;
 }
 
-.carousel-container img {
-  flex-shrink: 0;
+.rest-carousel-container img {
   display: block;
   object-fit: cover;
   width: calc(100% / var(--total-slides));
 }
 
-.carousel button {
+.rest-carousel button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -57,10 +58,10 @@
   z-index: 1;
 }
 
-.carousel button.left {
+.rest-carousel button.left {
   left: 10px;
 }
 
-.carousel button.right {
+.rest-carousel button.right {
   right: 10px;
 }

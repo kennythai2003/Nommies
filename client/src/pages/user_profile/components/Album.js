@@ -1,7 +1,6 @@
 // Album.js
 import React from "react";
 import AlbumCarousel from "./AlbumCarousel";
-import Slide from "./Slide";
 import "../styles/album.css";
 
 const Album = () => {
