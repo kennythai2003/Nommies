@@ -25,6 +25,7 @@ connectDB()
 
 const reviewsHandler = require("./handlers/review")
 const restaurantHandler = require("./handlers/restaurant")
+const imageHandler = require("./handlers/images")
 
 app.use(cookieparser())
 app.use(express.json({ extended: false }))
