@@ -37,14 +37,25 @@ function Navigation() {
 							<Link to="/home">notifications</Link>
 						</li>
 						{loggedIn === true && (
-							<li>
-								<img
-									src="user_prof.jpeg"
-									alt="profile"
-									className="nav-icons"
-								></img>
-								<Link to="/user">your profile</Link>
-							</li>
+							<>
+								<li>
+									<img
+									// update icon
+										src="user_prof.jpeg"
+										alt="social"
+										className="nav-icons"
+									></img>
+									<Link to="/social">social</Link>
+								</li>
+								<li>
+									<img
+										src="user_prof.jpeg"
+										alt="profile"
+										className="nav-icons"
+									></img>
+									<Link to="/user">your profile</Link>
+								</li>
+							</>
 						)}
 						{loggedIn === false && (
 							<li>

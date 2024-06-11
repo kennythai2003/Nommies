@@ -2,6 +2,9 @@ const mongoose = require("mongoose")
 const User = require("../dataModels/User.js")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+const multer = require("multer")
+const sharp = require("sharp")
+const fs = require("fs")
 
 const { OAuth2Client } = require("google-auth-library")
 const client = new OAuth2Client(
@@ -150,10 +153,161 @@ async function googleLogin(req, res) {
 	}
 }
 
+const allowedFileTypes = ["image/jpeg", "image/jpg", "image/png", "image/gif"]
+
+const fileFilter = (req, file, cb) => {
+	if (allowedFileTypes.includes(file.mimetype)) {
+		cb(null, true)
+	} else {
+		cb(
+			new Error(
+				"Invalid file type. Only JPEG, PNG, and GIF file types are allowed."
+			),
+			false
+		)
+	}
+}
+
+const sanitizeFilename = (filename) => {
+	return filename.replace(/[^a-zA-Z0-9.-]/g, "_")
+}
+
+const ensureUploadsDirectory = () => {
+	const dir = "uploads"
+	if (!fs.existsSync(dir)) {
+		fs.mkdirSync(dir, { recursive: true })
+	}
+}
+
+const storage = multer.diskStorage({
+	destination: function (req, file, cb) {
+		ensureUploadsDirectory()
+		cb(null, "uploads/")
+	},
+	filename: function (req, file, cb) {
+		const sanitizedFilename = sanitizeFilename(file.originalname)
+		cb(null, Date.now() + path.extname(sanitizedFilename))
+	},
+})
+
+const upload = multer({
+	storage: storage,
+	fileFilter: fileFilter,
+	limits: { fileSize: 5 * 1024 * 1024 },
+})
+
+async function getSelfProfile(req, res) {
+	try {
+		const user = await User.findById(req.user).select("-password")
+
+		if (!user) {
+			return res.status(404).json({ message: "User not found" })
+		}
+		res.json(user)
+	} catch (error) {
+		console.error(error)
+		res.status(500).json({ message: "Error fetching user profile" })
+	}
+}
+
+async function getUserProfile(req, res) {
+	try {
+		const userToViewId = req.params.userId
+		const loggedInUserId = req.user 
+
+		console.log(loggedInUserId)
+		console.log(userToViewId)
+
+		if (userToViewId === loggedInUserId) {
+			return res.status(403).json({
+				message:
+					"You cannot view your own profile through this endpoint",
+			})
+		}
+
+		const user = await User.findById(userToViewId).select("-password")
+
+		if (!user) {
+			return res.status(404).json({ message: "User not found" })
+		}
+
+		res.json(user)
+	} catch (error) {
+		console.error(error)
+		res.status(500).json({ message: "Error fetching user profile" })
+	}
+}
+
+async function updateProfile(req, res) {
+	try {
+		const userId = req.user
+		const { firstname, lastname, quote } = req.body
+
+		const updatedFields = {
+			firstname,
+			lastname,
+			quote,
+		}
+
+		if (req.files) {
+			if (req.files.profileImage) {
+				updatedFields.profileImage = `/uploads/${req.files.profileImage[0].filename}`
+				await sharp(req.files.profileImage[0].path)
+					.resize(200, 200)
+					.toFormat("jpeg")
+					.jpeg({ quality: 80 })
+					.toFile(profileImagePath)
+
+				fs.unlinkSync(req.files.profileImage[0].path)
+				updatedFields.profileImage = `/${profileImagePath}`
+			}
+			if (req.files.bannerImage) {
+				updatedFields.bannerImage = `/uploads/${req.files.bannerImage[0].filename}`
+				await sharp(req.files.bannerImage[0].path)
+					.resize(1000, 300)
+					.toFormat("jpeg")
+					.jpeg({ quality: 80 })
+					.toFile(bannerImagePath)
+
+				fs.unlinkSync(req.files.bannerImage[0].path)
+				updatedFields.bannerImage = `/${bannerImagePath}`
+			}
+		}
+
+		const updatedUser = await User.findByIdAndUpdate(
+			userId,
+			updatedFields,
+			{ new: true }
+		)
+		if (!updatedUser) {
+			return res.status(404).json({ message: "User not found" })
+		}
+
+		res.json(updatedUser)
+	} catch (error) {
+		console.error(error)
+		res.status(500).json({ message: "Error updating user profile" })
+	}
+}
+
+async function getUsers(req, res) {
+	try {
+		const users = await User.find({}, "firstname lastname _id")
+		res.json(users)
+	} catch (error) {
+		res.status(500).json({ message: "Error fetching users" })
+	}
+}
+
 module.exports = {
 	signUp,
 	logIn,
 	logOut,
 	loggedIn,
 	googleLogin,
+	getSelfProfile,
+	getUserProfile,
+	updateProfile,
+	upload,
+	getUsers,
 }

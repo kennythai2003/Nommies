@@ -21,7 +21,7 @@ function LogOutBtn() {
 
 	return (
 		<div className="edit-profile-button" onClick={logOut}>
-			log out
+			Log Out
 		</div>
 	)
 }

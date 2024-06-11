@@ -24,10 +24,23 @@ const UserSchema = new mongoose.Schema({
 		type: String,
 		unique: true,
 		sparse: true,
+		default: null,
 	},
-	picture: {
+	profileImage: {
 		type: String,
-		required: false,
+		default: "",
+	},
+	bannerImage: {
+		type: String,
+		default: "",
+	},
+	quote: {
+		type: String,
+		default: "",
+	},
+	followers: {
+		type: Number,
+		default: 0,
 	},
 })
 
