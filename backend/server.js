@@ -18,6 +18,7 @@ const {
 	getUserProfile,
 	updateProfile,
 	getUsers,
+	followUser,
 } = require("./handlers/users")
 
 connectDB()
@@ -55,7 +56,10 @@ authRouter.post("/logIn", logIn)
 authRouter.post("/googleLogin", googleLogin)
 authRouter.post("/logOut", logOut)
 authRouter.get("/loggedIn", loggedIn)
-authRouter.get("/users", getUsers)
+authRouter.get("/users", auth, getUsers)
+
+authRouter.post('/users/:followedId/follow', auth, followUser)
+
 
 authRouter.get("/profile", auth, authOwnership, getSelfProfile)
 authRouter.put(

@@ -276,13 +276,40 @@ async function updateProfile(req, res) {
 
 async function getUsers(req, res) {
 	try {
+		const userId = req.user
 		const users = await User.find(
-			{},
+			{ _id: { $ne: userId } },
 			"firstname lastname followers quote profileImage"
 		)
+
 		res.json(users)
 	} catch (err) {
 		res.status(500).json({ message: err.message })
+	}
+}
+
+const followUser = async (req, res) => {
+	const { followedId } = req.params
+	const { followingId } = req.body
+
+	try {
+		const user = await User.findById(followedId)
+		if (!user) {
+			return res.status(404).json({ message: "User not found" })
+		}
+		if (!Array.isArray(user.followers)) {
+			user.followers = []
+		}
+
+		if (user.followers.includes(followingId)) {
+			return res.status(400).json({ message: "Already following" })
+		}
+		user.followers.push(followingId)
+		await user.save()
+		res.status(200).json({ message: "Followed successfully" })
+	} catch (error) {
+		console.error("Error following user:", error)
+		res.status(500).json({ message: error.message })
 	}
 }
 
@@ -297,4 +324,5 @@ module.exports = {
 	updateProfile,
 	upload,
 	getUsers,
+	followUser,
 }

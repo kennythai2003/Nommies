@@ -16,6 +16,7 @@ const Profile = () => {
 		profileImage: "",
 		bannerImage: "",
 		quote: "",
+		followers: "0",
 	})
 
 	useEffect(() => {
@@ -69,7 +70,13 @@ const Profile = () => {
 			<div className="profile-info">
 				<div className="name-and-friends">
 					<Name name={`${userData.firstname} ${userData.lastname}`} />
-					<h3 className="friends-count">789 followers</h3>
+					<h3 className="friends-count">{`${
+						userData.followers.length
+					} ${
+						userData.followers.length === 1
+							? "follower"
+							: "followers"
+					}`}</h3>
 				</div>
 				<div className="editing-buttons">
 					<LogOutBtn />

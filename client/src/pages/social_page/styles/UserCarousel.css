@@ -1,0 +1,37 @@
+.carousel-container {
+	position: relative;
+	margin-top: 5cqi;
+	padding: 20px;
+	height: 100%;
+	width: 100%;
+	z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-card {
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	text-align: center;
+	background-color: #fff;
+    width: 100%;
+    height: fit-content;
+    padding-bottom: 2em;
+}
+
+
+
+h3 {
+	margin: 10px 0;
+	color: #333;
+}
+
+p {
+	color: #777;
+}
+
+li {
+    display: none;
+}
