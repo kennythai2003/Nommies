@@ -6,6 +6,10 @@ Users can sign up with email/password or Google authentication, with the flexibi
 
 ---
 
+![](https://github.com/kennythai2003/Nommies/blob/main/READMEadjacent/Nommies-1.gif)
+
+---
+
 ## 🚀 How to Run the Project
 
 To get started, follow these steps to set up and run both the backend and frontend:
